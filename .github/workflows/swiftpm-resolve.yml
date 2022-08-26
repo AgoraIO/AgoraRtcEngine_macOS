@@ -4,6 +4,7 @@ on:
   push:
     branches:
       - "main"
+      - "4.x-branch"
     tags:
       - "!*"
   pull_request:
@@ -14,6 +15,6 @@ jobs:
   resolve:
     runs-on: macOS-latest
     steps:
-    - uses: actions/checkout@v1
+    - uses: actions/checkout@v3
     - name: Build Package
       run: swift package resolve
