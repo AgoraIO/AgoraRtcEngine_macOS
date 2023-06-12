@@ -44,7 +44,7 @@ jobs:
       - name: Clone DocC Helper 👭
         uses: actions/checkout@v3
         with:
-          repository: maxxfrazer/xcframework-to-docc
+          repository: nirm2009/xcframework-to-docc-macos
           path: xcframework-to-docc
       - name: Setup Xcode Project 🛠️
         run: |
