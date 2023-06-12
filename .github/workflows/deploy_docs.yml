@@ -25,9 +25,9 @@ concurrency:
 
 env:
   PACKAGE_NAME: AgoraRtcKit
-  BUILD_DEST: generic/platform=iOS
-  BUILD_PRODUCT: Debug-iphoneos
-  JSON_TEMPLATE_BASE: https://github.com/AgoraIO/agora_doc_source/releases/download/master-build/ios_ng_json_template
+  BUILD_DEST: generic/platform=macOS
+  BUILD_PRODUCT: Debug-macos
+  JSON_TEMPLATE_BASE: https://github.com/AgoraIO/agora_doc_source/releases/download/master-build/macos_ng_json_template
 
 jobs:
   generate-docc:
