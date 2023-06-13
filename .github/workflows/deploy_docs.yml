@@ -54,7 +54,7 @@ jobs:
       - name: Clone Python Script 👭
         uses: actions/checkout@v3
         with:
-          repository: littleGnAl/iris-doc
+          repository: maxxfrazer/iris-doc
           path: iris-doc
       - name: Set up python 3.9 🐍
         uses: actions/setup-python@v4
