@@ -8,17 +8,16 @@ AgoraRtcKit provides a wide range of features and tools for building reliable an
 - Support for multiple platforms and devices, including mobile and web
 - Advanced audio and video processing capabilities, such as noise suppression and echo cancellation
 - Easy integration with third-party tools and services, such as recording and streaming platforms
-- Built-in support for real-time messaging and chat
 
 AgoraRtcKit is designed to be flexible and customizable, allowing developers to tailor their applications to their specific needs and requirements.
+
+Head to Agora's [full Documentation](https://docs.agora.io/en/video-calling/get-started/get-started-sdk?platform=macos) for more details.
 
 ## Topics
 
 ### Getting Started
 
-- [GettingStarted](https://docs.agora.io/en/video-calling/get-started/get-started-sdk?platform=macos)
 - <doc:Channels>
-- <doc:/tutorials/TOC>
 
 ### Core Classes
 
