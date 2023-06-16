@@ -10,7 +10,6 @@ on:
   push:
     branches: [main]
   workflow_dispatch:
-    branches: [main]
 
 # Sets permissions of the GITHUB_TOKEN to allow deployment to GitHub Pages
 permissions:
@@ -49,7 +48,7 @@ jobs:
       - name: Setup Xcode Project 🛠️
         run: |
           sh -e xcframework-to-docc/dl_framework.sh ${{ env.PACKAGE_NAME }}
-          sh -e xcframework-to-docc/move_header_files.sh ${{ env.PACKAGE_NAME }}.xcframework "" macos-arm64_x86_64
+          sh -e xcframework-to-docc/move_header_files.sh ${{ env.PACKAGE_NAME }}.xcframework AgoraRtcKit.docc macos-arm64_x86_64
           sh -e xcframework-to-docc/headers_to_xcodeproj.sh ${{ env.PACKAGE_NAME }} docc_builder
       - name: Clone Python Script 👭
         uses: actions/checkout@v3
