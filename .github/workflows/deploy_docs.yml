@@ -31,7 +31,7 @@ env:
 jobs:
   generate-docc:
     name: Build DocC Archives
-    runs-on: macos-13
+    runs-on: macos-15-intel
     strategy:
       matrix:
         language: ['en', 'cn']
@@ -39,7 +39,7 @@ jobs:
       - name: Checkout 🛎️
         uses: actions/checkout@v3
       - name: Switch Xcode 🔄
-        run: sudo xcode-select --switch /Applications/Xcode_14.3.app
+        run: sudo xcode-select --reset
       - name: Clone DocC Helper 👭
         uses: actions/checkout@v3
         with:
@@ -88,15 +88,19 @@ jobs:
           tag: ${{ github.ref_name }}
   publish:
     name: Publish Documentation Site 🛜
-    if: github.event.release.prerelease == false && github.event.release.draft == false && github.event.release.tag_name == github.event.repository.default_branch
-    runs-on: macos-13
+    if: |
+      (github.event_name == 'release' && 
+       github.event.release.prerelease == false && 
+       github.event.release.draft == false) ||
+      github.event_name == 'workflow_dispatch'
+    runs-on: macos-15-intel
     needs: generate-docc
     strategy:
       matrix:
         language: ['en']
     steps:
       - name: Download DocC Archive ⬇️
-        uses: actions/download-artifact@v3
+        uses: actions/download-artifact@v4
         with:
           name: ${{ env.PACKAGE_NAME }}-${{ matrix.language }}.doccarchive.zip
       - name: Unzip Archive 😮
@@ -116,9 +120,9 @@ jobs:
             --output-path docs
           echo "<script>window.location.href += \"/documentation/${{ steps.package-name.outputs.lowercase }}\"</script>" > docs/index.html
       - name: Upload artifact ⬆️
-        uses: actions/upload-pages-artifact@v1
+        uses: actions/upload-pages-artifact@v3
         with:
           path: 'docs'
       - name: Deploy to GitHub Pages 📑
         id: deployment
-        uses: actions/deploy-pages@v2
+        uses: actions/deploy-pages@v4
